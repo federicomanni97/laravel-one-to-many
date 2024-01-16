@@ -19,7 +19,7 @@
             <select class="form-control @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
                 <option value="">Select a category</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" {{ old('category_id', $post->category_id) ==  $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                    <option value="{{ $category->id }}" {{ old('category_id', $project->category_id) ==  $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                 @endforeach
             </select>
             @error('category_id')
@@ -45,3 +45,4 @@
         <button type="reset" class="btn btn-primary">Reset</button>
     </form>
 </section>
+@endsection

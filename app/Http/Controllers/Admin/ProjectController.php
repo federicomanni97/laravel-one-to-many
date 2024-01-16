@@ -53,7 +53,7 @@ class ProjectController extends Controller
             $formData['image'] = $img_path;    
         }
         $project = Project::create($formData);
-        return redirect()->route('admin.projects.show', $project->id);
+        return redirect()->route('admin.projects.show', $project->slug);
     }
 
     /**
@@ -90,7 +90,7 @@ class ProjectController extends Controller
         // aggiungiamo l'id dell'utente
         $project->update($formData);
         // $project = Project::create($formData);
-        return redirect()->route('admin.projects.show', $project->id);
+        return redirect()->route('admin.projects.show', $project->slug);
     }
 
     /**

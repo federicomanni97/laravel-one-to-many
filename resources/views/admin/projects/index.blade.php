@@ -21,7 +21,7 @@
         </tbody>
         </table>
         @endforeach
-        <form class="p-2" action="{{route('admin.projects.create', $project->id)}}">
+        <form class="p-2" action="{{route('admin.projects.create', $project)}}">
             <button class=" btn btn-primary" >Create</button>
         </form>
     </section>
