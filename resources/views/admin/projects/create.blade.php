@@ -13,6 +13,18 @@
             @enderror
         </div>
         <div class="mb-3">
+            <label for="category_id">Select Category</label>
+            <select class="form-control @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
+                <option value="">Select a category</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                @endforeach
+            </select>
+            @error('category_id')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+       </div>
+        <div class="mb-3">
             <label for="body" class="my-2">Body</label>
             <textarea type="text" class="form-control @error('title') is-invalid @enderror" name="body" id="body"
                 required maxlength="200" minlength="3" value="{{old('body')}}"></textarea>
