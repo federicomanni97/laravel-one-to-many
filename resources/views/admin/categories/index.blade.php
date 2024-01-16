@@ -4,12 +4,11 @@
         <h2 class="my-2 p-2">Projects</h2>
         <!-- <p>section content</p> -->
         @foreach ($categories as $category)
-        <!-- <p> <a href="{{route('admin.projects.show', $project->id)}}">{{$project->title}}</a></p> -->
         <table class="table">
         <tbody class="d-flex align-middle">
             <tr>
-                <th scope="row"><a class="fw-normal text-decoration-none text-black" href="{{route('admin.categories.show', $category->id)}}">{{$$category->name}}</a></th>
-                <th><a href="{{route('admin.caregories.edit' , $category)}}" class="btn btn-primary">Edit</a></th>
+                <th scope="row"><a class="fw-normal text-decoration-none text-black" href="{{route('admin.categories.show', $category->id)}}">{{$category->name}}</a></th>
+                <th><a href="{{route('admin.categories.edit' , $category->slug)}}" class="btn btn-primary">Edit</a></th>
                 <th>
                     <form action="{{route('admin.categories.destroy' , $category)}}" method="POST">
                     @csrf
