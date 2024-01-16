@@ -8,7 +8,7 @@
         <table class="table">
         <tbody class="d-flex align-middle">
             <tr>
-                <th scope="row"><a class="fw-normal text-decoration-none text-black" href="{{route('admin.projects.show', $project->id)}}">{{$project->title}}</a></th>
+                <th scope="row"><a class="fw-normal text-decoration-none text-black" href="{{route('admin.projects.show', $project)}}">{{$project->title}}</a></th>
                 <th><a href="{{route('admin.projects.edit' , $project)}}" class="btn btn-primary">Edit</a></th>
                 <th>
                     <form action="{{route('admin.projects.destroy' , $project)}}" method="POST">
