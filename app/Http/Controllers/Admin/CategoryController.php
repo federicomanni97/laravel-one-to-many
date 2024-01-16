@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -24,7 +25,8 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        return view('admin.category.create');
+        $categories = Category::all();
+        return view('admin.categories.create', compact('categories'));
     }
 
     /**
@@ -33,6 +35,13 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request)
     {
         //
+        $formData = $request->validated();
+        // creo lo slug 
+        $slug = Str::of($formData['name'])->slug('-');
+        // aggiungo slug al formdata
+        $formData['slug'] = $slug;
+        $category = Category::create($formData);
+        return redirect()->route('admin.categories.show', $category);
     }
 
     /**

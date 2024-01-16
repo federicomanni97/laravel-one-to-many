@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use illuminate\Support\Str;
 
 class Project extends Model
 {
@@ -18,5 +19,14 @@ public function user()
 public function category(){
     return $this->belongsTo(Category::class);
 }
-
+public static function getSlug($title)
+{
+    $slug = Str::of($title)->slug("-");
+    $count = 1;
+    while (Project::where("slug", $slug)->first()) {
+        $slug = Str::of($title)->slug("-") . "-{$count}";
+        $count++;
+    }
+    return $slug;
+}
 }
